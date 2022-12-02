@@ -1,45 +1,10 @@
 use std::io;
 
-// #[derive(Copy, Clone)]
-// enum Moves {
-//     Rock = 1,
-//     Paper,
-//     Scissors
-// }
-//
-//
-//
-// 0
-// 1
-// 2
-
-// #[derive(Copy, Clone)]
-// enum Outcome {
-//     Lose = 0,
-//     Draw = 3,
-//     Win = 6
-// }
-
 fn wins(elf: i32, us: i32) -> i32 {
-    // match elf {
-    //     Moves::Rock => match us {
-    //         Moves::Rock => Outcome::Draw,
-    //         Moves::Paper => Outcome::Win,
-    //         Moves::Scissors => Outcome::Lose,
-    //     },
-    //     Moves::Paper => match us {
-    //         Moves::Rock => Outcome::Lose,
-    //         Moves::Paper => Outcome::Draw,
-    //         Moves::Scissors => Outcome::Win,
-    //     },
-    //     Moves::Scissors => match us {
-    //         Moves::Rock => Outcome::Win,
-    //         Moves::Paper => Outcome::Lose,
-    //         Moves::Scissors => Outcome::Draw,
-    //     }
-    // }
-    if elf == us {
+   if elf == us {
         3 // draw
+
+    // SUPER AMAZING TRICK I LEARNED FROM DANIEL, THANKS :)
     } else if (elf + 1) % 3 == us {
         6 // win
     } else {
@@ -48,7 +13,6 @@ fn wins(elf: i32, us: i32) -> i32 {
 }
 
 fn score(elf: i32, us: i32) -> i32 {
-    // (wins(elf, us) as i32) + (us as i32)
     wins(elf, us) + us + 1
 }
 
@@ -60,16 +24,10 @@ fn main() {
         let line = line.unwrap();
         let mut chars = line.chars();
 
-        /*
-         * A - rock
-         * B - paper
-         * C - scissors
-         */
+
+        // this whole conversion can be a subtraction
         let elf_move = chars.next();
         let elf_move = match elf_move.unwrap() {
-            // 'A' => Moves::Rock,
-            // 'B' => Moves::Paper,
-            // 'C' => Moves::Scissors,
             'A' => 0,
             'B' => 1,
             'C' => 2,
@@ -78,11 +36,6 @@ fn main() {
         };
         chars.next();
 
-        /*
-         * X - rock
-         * Y - paper
-         * Z - scissors
-         */
         let our_move = chars.next();
         let our_move = match our_move.unwrap() {
             'X' => 0,
